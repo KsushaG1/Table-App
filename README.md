@@ -1,16 +1,67 @@
-# React + Vite
+# Table App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Чтобы перейти к таблице документов, добавьте `/table` к домену в адресной строке браузера.**
 
-Currently, two official plugins are available:
+Учебный проект — веб-приложение для управления документами компании с системой авторизации.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Стек технологий
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 18** — библиотека для построения пользовательского интерфейса
+- **Vite** — сборщик проекта
+- **React Router DOM** — клиентская навигация между страницами без перезагрузки браузера
+- **Material UI (MUI v5)** — библиотека готовых UI-компонентов (кнопки, таблицы, формы, иконки, табы)
+- **JavaScript (ES6+)** — основной язык разработки
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Как работает проект
+
+Приложение состоит из двух страниц:
+
+### Страница авторизации `/`
+Форма входа с тремя вкладками: **Вход**, **Регистрация** и **Сброс пароля**. Каждая вкладка содержит соответствующие поля ввода и кнопку действия. Переключение между вкладками реализовано через компонент `TabContext` из MUI Lab.
+
+### Страница таблицы `/table`
+Таблица документов с фиксированным заголовком (`stickyHeader`) и ограничением высоты с прокруткой. В таблице отображаются данные по компаниям, документам и сотрудникам. В нижней строке таблицы расположены поля ввода для добавления новой записи и кнопка очистки формы.
+
+### Шапка приложения
+Фиксированная шапка присутствует на обеих страницах. Содержит логотип-ссылку на главную и блок с именем пользователя.
+
+---
+
+## Чему я научилась
+
+- Строить структуру React-приложения: разделять код на страницы (`pages`) и переиспользуемые компоненты (`components`)
+- Настраивать клиентскую маршрутизацию через `React Router` и понимать разницу между `<Link>` и обычным `<a href>`
+- Работать с компонентами **Material UI**: использовать готовые элементы интерфейса (`AppBar`, `Table`, `Tabs`, `TextField`, `Button`, `Avatar`) и кастомизировать их через проп `sx`
+- Создавать собственные стилизованные компоненты через функцию `styled()` из MUI
+- Применять **Flexbox** для раскладки элементов внутри компонентов
+- Понимать иерархию компонентов и передачу данных через **props**
+- Использовать `ThemeProvider` для применения единой темы ко всему приложению
+
+---
+
+## Структура проекта
+
+```
+src/
+├── components/
+│   ├── header/
+│   │   └── Header.jsx        # Фиксированная шапка приложения
+│   ├── login/
+│   │   ├── Login.jsx         # Форма входа
+│   │   ├── Register.jsx      # Форма регистрации
+│   │   ├── Reset.jsx         # Форма сброса пароля
+│   │   ├── LoginTabs.jsx     # Контейнер с вкладками
+│   │   └── style.js          # Стилизованные компоненты для форм
+│   └── table/
+│       ├── TableBlock.jsx    # Обёртка таблицы с заголовками
+│       └── TableRows.jsx     # Строки таблицы и форма добавления
+├── pages/
+│   ├── LoginPage.jsx         # Страница авторизации (/)
+│   └── TablePage.jsx         # Страница таблицы (/table)
+├── App.jsx                   # Корень приложения, роутер, тема
+└── main.jsx                  # Точка входа
+```
