@@ -1,4 +1,81 @@
 # Table App
+
+> **To navigate to the documents table, add `/table` to the domain in your browser's address bar.**
+
+A pet project focused on learning **Material UI (MUI)**. The project is a web application for managing company documents with an authorization system. The entire interface is built exclusively on MUI components with no separate CSS written.
+
+---
+
+## Tech Stack
+
+- **Material UI (MUI v5)** — the core of the project: all layout, styling, and UI components (buttons, tables, forms, icons, tabs, theme)
+- **React 18** — library for building the user interface
+- **React Router DOM** — client-side navigation between pages without browser reload
+- **Vite** — project bundler
+- **JavaScript (ES6+)** — primary language
+
+---
+
+## How It Works
+
+The app consists of two pages:
+
+### Authorization Page `/`
+A login form with three tabs: **Sign In**, **Register**, and **Reset Password**. Each tab contains the corresponding input fields and an action button. Tab switching is handled by the `TabContext` component from MUI Lab.
+
+### Table Page `/table`
+A documents table with a sticky header (`stickyHeader`) and a scrollable fixed-height container. The table displays data about companies, documents, and employees. The bottom row contains input fields for adding a new entry and a button to clear the form.
+
+### App Header
+A fixed header present on both pages. Contains a logo link to the home page and a block with the user's name.
+
+---
+
+## What I Learned 🚀
+
+The main focus of the project was deep exploration of **Material UI**:
+
+- Working with a wide range of MUI components: `AppBar`, `Toolbar`, `Table`, `Tabs`, `TextField`, `Button`, `Avatar`, `LinearProgress`, `Stack`, and more
+- Customizing components via the `sx` prop and understanding how MUI handles inline styles
+- Creating custom styled components using the `styled()` function from MUI
+- Configuring a global app theme via `ThemeProvider`
+- Applying **Flexbox** inside `sx` for element layout
+- Using `TabContext` / `TabList` / `TabPanel` from MUI Lab for tabbed navigation
+
+And across the project in general:
+
+- Building a React app structure: separating code into pages (`pages`) and reusable components (`components`)
+- Setting up client-side routing with `React Router` and understanding the difference between `<Link>` and a regular `<a href>`
+- Understanding component hierarchy and passing data through **props**
+- Deploying a project via **Vercel** with automatic updates on every push to GitHub
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── header/
+│   │   └── Header.jsx        # Fixed app header
+│   ├── login/
+│   │   ├── Login.jsx         # Sign in form
+│   │   ├── Register.jsx      # Registration form
+│   │   ├── Reset.jsx         # Password reset form
+│   │   ├── LoginTabs.jsx     # Tab container
+│   │   └── style.js          # Styled components for forms
+│   └── table/
+│       ├── TableBlock.jsx    # Table wrapper with headers
+│       └── TableRows.jsx     # Table rows and add entry form
+├── pages/
+│   ├── LoginPage.jsx         # Authorization page (/)
+│   └── TablePage.jsx         # Table page (/table)
+├── App.jsx                   # App root, router, theme
+└── main.jsx                  # Entry point
+```
+
+
+# Table App
  
 > **Чтобы перейти к таблице документов, добавьте `/table` к домену в адресной строке браузера.**
  
